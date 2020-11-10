@@ -4,8 +4,9 @@ const fs = require("fs");
 const ejs = require("ejs")
 const url = require("url");
 
-const index_page = fs.readFileSync('./index.ejs','utf-8');
-const style_css = fs.readFileSync('./style.css','utf-8')
+const other_page = fs.readFileSync('other.ejs','utf-8')
+const index_page = fs.readFileSync('index.ejs','utf-8');
+const style_css = fs.readFileSync('style.css','utf-8')
 var server = http.createServer(getFromClient)
 
 
@@ -25,12 +26,22 @@ function getFromClient(req,res) {
             res.end();
             // code
             break;
+        case '/other':
+            var content2 = ejs.render(other_page,{
+                title:'hy',
+                content:'bor'
+            });
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.write(content2);
+            res.end();
+            break;
             
         case'/style.css':
             res.writeHead(200,{'Content-Type': 'text/css'});
             res.write(style_css);
             res.end();
             break;
+            
         
         default:
         res.writeHead(200,{'Contet-Type':'text/plan'});
