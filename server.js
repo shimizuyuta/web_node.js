@@ -1,19 +1,23 @@
 const http = require("http")
 const port = process.env.PORT || 3000;
 const fs = require("fs");
-const req_res = (req,res) =>{
-    fs.readFile('./index2.html','UTF-8',
-    (error,data) =>{
-        res.writeHead(200,{'Content-Type':'text/html'});
-        res.write(data);
-        res.end();
-        console.log('hello world')
-    }
-    );
-};
+const ejs = require("ejs")
+
+const index_page = fs.readFileSync('./index.ejs','utf-8');
+
+var server = http.createServer(getFromClient)
+
+
+// const getFromClient = 
+function getFromClient(req,res) {
+    var content = ejs.render(index_page);
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.write(content)
+    res.end();
+}
+    
 
 
 
-var server = http.createServer(req_res)
 server.listen(port)
 
