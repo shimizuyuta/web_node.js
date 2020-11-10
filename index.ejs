@@ -19,10 +19,20 @@
         <header>
             <h1>hello world</h1>
             <h2><%= title%></h2>
-            <p><a href='/other'>hahahaha</a></p>
+            <!--<p><a href='/other'>hahahaha</a></p>-->
+            <form method ='post' action='/other'>
+                <input type='text' name = 'msg'>
+                <input type='submit' value= 'click'>
+            </form>
+            
         </header>
         <div role ='main'>
             <p>index page</p>
+            <% for(var key in data){%>
+            <li><%= key %></li>
+            <h1>hello</h1>
+            <th><%= data[key] %></th>
+            <% }%>
             <p><%= content %></p>
             <p><%= title %></p>
         </div>
