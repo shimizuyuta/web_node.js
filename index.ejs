@@ -3,6 +3,7 @@
     <head>
         <meta http-quiv='content-type'
         content='text/html; charset=UTF-8'>
+        <link type ='text/css' href='./style.css' rel ='stylesheet'>
         <style>
             h1{
                 font-size: 30px;
@@ -15,13 +16,14 @@
         </style>
     </head>
     <body>
-        <h2>index</h2>
-        <p>index</p>
         <header>
             <h1>hello world</h1>
+            <h2><%= title%></h2>
         </header>
         <div role ='main'>
             <p>index page</p>
+            <p><%= content %></p>
+            <p><%= title %></p>
         </div>
     </body>
 </html>
